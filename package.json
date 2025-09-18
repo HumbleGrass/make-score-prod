@@ -1,0 +1,56 @@
+{
+  "name": "wangshangpingjuan-app-prod",
+  "version": "1.0.0",
+  "description": "中文水平考试评分平台",
+  "author": "Your Name <you@example.com>",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "electron .",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.example.yourapp.prod",
+    "productName": "中文水平考试评分平台",
+    "copyright": "Copyright © 2023 Your Name",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/{@types,.cache}"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/",
+        "to": "assets"
+      }
+    ],
+    "win": {
+      "target": ["nsis", "zip"],
+      "icon": "build/win.ico"
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "icon": "build/mac.icns",
+      "identity": null
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^36.5.0",
+    "electron-builder": "^26.0.12"
+  }
+}

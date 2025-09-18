@@ -1,0 +1,36 @@
+name: Release-windows
+
+on:
+  push:
+    tags:
+      - 'v*' # 当推送以v开头的标签时触发工作流
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build:
+    runs-on: windows-latest  # 推荐先用单一平台调试
+    timeout-minutes: 30      # 避免超时失败
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20   # 使用与本地一致的 Node 版本
+          cache: 'yarn'     # 或 'npm'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build Electron app
+        run: yarn build:win  # 先测试单一平台
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 自动发布到 GitHub Releases
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: electron-build-windows
+          path: dist/        # 上传构建产物
