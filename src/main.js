@@ -30,7 +30,8 @@ const createWindow = () => {
 
   // win.loadFile(path.join(__dirname, "index.html"));
 
-  const loadURL = "https://newmarking.chinesetest.cn/" // 测试地址
+  // const loadURL = "https://newmarking.chinesetest.cn/" // 正式环境
+  const loadURL = "http://c.defaultjs.asia" // 173
 
 
   // 加载远程URL

@@ -1,5 +1,5 @@
 {
-  "name": "wangshangpingjuan-app-prod",
+  "name": "wangshangpingjuan-app-asia",
   "version": "1.0.0",
   "description": "中文水平考试评分平台",
   "author": "Your Name <you@example.com>",
@@ -12,7 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "build": {
-    "appId": "com.example.yourapp.prod",
+    "appId": "com.example.yourapp.asia",
     "productName": "中文水平考试评分平台",
     "copyright": "Copyright © 2023 Your Name",
     "directories": {
